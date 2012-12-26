@@ -3,7 +3,7 @@ Display [Markdown](http://github.github.com/github-flavored-markdown/) formatted
 
 Handy for authoring & previewing **README.md** files (or any Markdown for that matter) for project repositories, avoiding additional noisy `git push` actions in your commit logs due to Markdown typos/errors.
 
-**Note:** this is intended for local development use only, probably not a good idea for production usage due to GitHub API rate limits per user.
+**Note:** this is intended for local development only, probably not a good idea for production use due to GitHub API rate limits per user.
 
 ## Requires
 - PHP 5.4+ (developed against PHP 5.4.10)
@@ -18,7 +18,7 @@ Your project(s) Markdown files are accessible on your local web server in plain 
 	http://localhost/projects/unrarallthefiles/README.md
 	http://localhost/projects/webserverinstall.ubuntu12.04/install.md
 
-To view using the same parsing and styling as GitHub project pages, request using a querystring switch:
+To view rendered Markdown using the same parsing and styling as GitHub project pages, request files with querystring switch:
 
 	http://localhost/projects/ghmarkdownrender/README.md?ghmd
 	http://localhost/projects/thummer/README.md?ghmd
