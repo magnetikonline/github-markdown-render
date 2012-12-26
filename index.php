@@ -236,11 +236,11 @@ class GitHubMarkdownRender {
 
 		table tr {
 			border-top: 1px solid #ccc;
-			background-color: #fff;
+			background: #fff;
 		}
 
 		table tr:nth-child(2n) {
-			background-color: #f8f8f8;
+			background: #f8f8f8;
 		}
 
 		table th,
@@ -259,7 +259,7 @@ class GitHubMarkdownRender {
 		}
 
 		code,tt {
-			background-color: #f8f8f8;
+			background: #f8f8f8;
 			border-radius: 3px;
 			border: 1px solid #eaeaea;
 			margin: 0 2px;
@@ -267,7 +267,7 @@ class GitHubMarkdownRender {
 		}
 
 		pre {
-			background-color: #f8f8f8;
+			background: #f8f8f8;
 			border-radius: 3px;
 			border: 1px solid #ccc;
 			font-size: 13px;
@@ -293,14 +293,14 @@ class GitHubMarkdownRender {
 		.highlight .cp { color: #999999;font-weight: bold; }
 		.highlight .cs { color: #999999;font-style: italic;font-weight: bold; }
 		.highlight .c { color: #999988;font-style: italic; }
-		.highlight .err { background-color: #e3d2d2;color: #a61717;}
-		.highlight .gc { background-color: #eaf2f5;color: #999; }
-		.highlight .gd .x { background-color: #ffaaaa;color: #000000; }
-		.highlight .gd { background-color: #ffdddd;color: #000000; }
+		.highlight .err { background: #e3d2d2;color: #a61717;}
+		.highlight .gc { background: #eaf2f5;color: #999; }
+		.highlight .gd .x { background: #ffaaaa;color: #000000; }
+		.highlight .gd { background: #ffdddd;color: #000000; }
 		.highlight .ge { font-style: italic; }
 		.highlight .gh { color: #999999; }
-		.highlight .gi .x { background-color: #aaffaa;color: #000000; }
-		.highlight .gi { background-color: #ddffdd;color: #000000; }
+		.highlight .gi .x { background: #aaffaa;color: #000000; }
+		.highlight .gi { background: #ddffdd;color: #000000; }
 		.highlight .go { color: #888888; }
 		.highlight .gp { color: #555555; }
 		.highlight .gr { color: #aa0000; }
