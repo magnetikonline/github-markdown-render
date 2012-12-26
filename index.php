@@ -147,12 +147,16 @@ class GitHubMarkdownRender {
 
 		#markdown {
 			background: #fff;
-			border: 1px solid #ccc;
+			border: 1px solid #cacaca;
 			padding: 30px;
 		}
 
 		#markdown > :first-child {
 			margin-top: 0;
+		}
+
+		#markdown > :last-child {
+			margin-bottom: 0;
 		}
 
 		h1,h2,h3,h4,h5,h6 {
