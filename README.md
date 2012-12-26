@@ -1,7 +1,7 @@
 # GitHub Markdown render
 Display [Markdown](http://github.github.com/github-flavored-markdown/) formatted documents on your local development web server using GitHub's [Markdown Rendering API](http://developer.github.com/v3/markdown/) and CSS to mimic the visual display on GitHub itself.
 
-Handy for authoring & previewing **README.md** files (or any Markdown for that matter) for project repositories, avoiding additional noisy `git push` actions in your commit logs due to Markdown typos/errors.
+Handy for authoring/previewing **README.md** files (or any Markdown for that matter) in project repositories, hopefully avoiding noisy `git push` actions in commit logs due to excessive typos/errors.
 
 **Note:** this is intended for local development only, probably not a good idea for production use due to GitHub API rate limits per user.
 
@@ -25,7 +25,7 @@ To view rendered Markdown using the same parsing and styling as GitHub project p
 	http://localhost/projects/unrarallthefiles/README.md?ghmd
 	http://localhost/projects/webserverinstall.ubuntu12.04/install.md?ghmd
 
-Rendered HTML is cached in a PHP session based on **\*.md** modification time to reduce repeated GitHub API calls for the same Markdown file content.
+Rendered HTML is cached in a PHP session based on **\*.md** modification time to reduce repeated GitHub API calls for the same file content.
 
 ## Install
 
@@ -59,4 +59,4 @@ Next, setup URL rewrite for your default virtual host so all requests to **/loca
 You should now be able to call a Markdown document with a querystring of `?ghmd` to receive a familiar GitHub style Markdown display. The page footer will also display the total/available API rate limits, or if rendering was cached based on file modification time.
 
 ## CSS style issues
-Markdown display CSS has been lifted (deliberately) from GitHub.com. It's quite possible there are some CSS styles missing, if so would appreciate examples and/or pull requests to fix.
+Markdown display CSS has been lifted (deliberately) from GitHub.com. It's more than likely there are some CSS styles missing. Would really appreciate any Markdown source examples and/or pull requests to help make things complete.
