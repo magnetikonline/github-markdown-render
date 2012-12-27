@@ -11,8 +11,7 @@ class GitHubMarkdownRender {
 	const MARKDOWN_EXT = '.md';
 	const CACHE_SESSION_KEY = 'ghmarkdownrender';
 
-	const GITHUB_USERNAME = 'username';
-	const GITHUB_PASSWORD = 'password';
+	const GITHUB_TOKEN = 'token';
 	const DOC_ROOT = '/path/to/docroot';
 
 
@@ -72,7 +71,7 @@ class GitHubMarkdownRender {
 			$this->renderErrorMessage(
 				'<p>Unable to access GitHub API</p>' .
 				'<ul>' .
-					'<li>Check your <strong>GITHUB_USERNAME</strong> and <strong>GITHUB_PASSWORD</strong> are correct</li>' .
+					'<li>Check your <strong>GITHUB_TOKEN</strong> is correct</li>' .
 					'<li>Is GitHub/GitHub API endpoint <strong>' . htmlspecialchars(self::API_URL) . '</strong> accessable?</li>' .
 					'<li>Has rate limit been exceeded? If so, wait until next hour</li>' .
 				'</ul>'
@@ -421,13 +420,13 @@ EOT;
 				CURLOPT_HEADER => true,
 				CURLOPT_HTTPHEADER => [
 					'Content-Type: ' . self::CONTENT_TYPE,
-					'User-Agent: ' . self::USER_AGENT
+					'User-Agent: ' . self::USER_AGENT,
+					'Authorization: token ' . GITHUB_TOKEN
 				],
 				CURLOPT_POST => true,
 				CURLOPT_POSTFIELDS => $markdownSource,
 				CURLOPT_RETURNTRANSFER => true,
-				CURLOPT_URL => self::API_URL,
-				CURLOPT_USERPWD => sprintf('%s:%s',self::GITHUB_USERNAME,self::GITHUB_PASSWORD)
+				CURLOPT_URL => self::API_URL
 			]
 		);
 
