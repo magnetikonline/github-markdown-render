@@ -30,16 +30,14 @@ Rendered HTML is cached in a PHP session based on **\*.md** modification time to
 ## Install
 
 ### Configure index.php
-The following constants need to be configured at the top of `index.php` in the `GitHubMarkdownRender` class:
+Generate a new [GitHub OAuth token](http://developer.github.com/v3/oauth/#create-a-new-authorization) using the supplied [generatetoken.sh](https://github.com/magnetikonline/ghmarkdownrender/blob/master/generatetoken.sh) script. Make a note of the token returned for the next step.
+
+Update the following constants at the top of `index.php` in the `GitHubMarkdownRender` class:
 
 <table>
 	<tr>
-		<td>GITHUB_USERNAME</td>
-		<td>Your GitHub username. <a href="http://developer.github.com/v3/#rate-limiting">Anonymous GitHub API calls are limited to 60 per hour</a>, providing your credentials ramps this up to a much more suitable 5000 requests per hour.</td>
-	</tr>
-	<tr>
-		<td>GITHUB_PASSWORD</td>
-		<td>See above.</td>
+		<td>GITHUB_TOKEN</td>
+		<td>Your generated GitHub OAuth token. Anonymous GitHub API calls are <a href="http://developer.github.com/v3/#rate-limiting">limited to 60 per hour</a>, providing user credentials ramps this up to a more usable 5000 requests per hour.</td>
 	</tr>
 	<tr>
 		<td>DOC_ROOT</td>
