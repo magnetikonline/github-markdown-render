@@ -403,13 +403,13 @@ EOT;
 
 		if (!isset($_SESSION[self::CACHE_SESSION_KEY])) {
 			// create new session cache structure
-			$_SESSION[self::CACHE_SESSION_KEY] = [];
+			$_SESSION[self::CACHE_SESSION_KEY] = array();
 		}
 
-		$_SESSION[self::CACHE_SESSION_KEY][$markdownFilePath] = [
+		$_SESSION[self::CACHE_SESSION_KEY][$markdownFilePath] = array(
 			'timestamp' => filemtime($markdownFilePath),
 			'html' => $html
-		];
+		);
 	}
 
 	private function doGitHubMarkdownRequest($markdownSource) {
@@ -417,18 +417,18 @@ EOT;
 		$curl = curl_init();
 		curl_setopt_array(
 			$curl,
-			[
+			array(
 				CURLOPT_HEADER => true,
-				CURLOPT_HTTPHEADER => [
+				CURLOPT_HTTPHEADER => array(
 					'Content-Type: ' . self::CONTENT_TYPE,
 					'User-Agent: ' . self::USER_AGENT
-				],
+				),
 				CURLOPT_POST => true,
 				CURLOPT_POSTFIELDS => $markdownSource,
 				CURLOPT_RETURNTRANSFER => true,
 				CURLOPT_URL => self::API_URL,
 				CURLOPT_USERPWD => sprintf('%s:%s',self::GITHUB_USERNAME,self::GITHUB_PASSWORD)
-			]
+			)
 		);
 
 		$response = curl_exec($curl);
@@ -479,12 +479,12 @@ EOT;
 			}
 		}
 
-		return [
+		return array(
 			'ok' => ($httpStatusOk && $rateLimit && $rateRemain),
 			'rateLimit' => $rateLimit,
 			'rateRemain' => $rateRemain,
 			'html' => $response
-		];
+		);
 	}
 }
 
