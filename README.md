@@ -30,7 +30,7 @@ Rendered HTML is cached in a PHP session based on **\*.md** modification time to
 ## Install
 
 ### Configure index.php
-Generate a new [GitHub OAuth token](http://developer.github.com/v3/oauth/#create-a-new-authorization) using the supplied [generatetoken.sh](https://github.com/magnetikonline/ghmarkdownrender/blob/master/generatetoken.sh) script. Make a note of the token returned for the next step.
+Generate a new [GitHub OAuth token](http://developer.github.com/v3/oauth/#create-a-new-authorization) using the supplied [generatetoken.sh](generatetoken.sh) script. Make a note of the token returned for the next step.
 
 Update the following constants at the top of `index.php` in the `GitHubMarkdownRender` class:
 
