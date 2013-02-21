@@ -1,8 +1,4 @@
 <?php
-// index.php
-
-
-
 class GitHubMarkdownRender {
 
 	const API_URL = 'https://api.github.com/markdown/raw';
@@ -15,8 +11,7 @@ class GitHubMarkdownRender {
 	const DOC_ROOT = '/path/to/docroot';
 
 
-
-	public function execute() {
+	public function __construct() {
 
 		// validate DOC_ROOT exists
 		if (!is_dir(self::DOC_ROOT)) {
@@ -488,5 +483,4 @@ EOT;
 }
 
 
-$gitHubMarkdownRender = new GitHubMarkdownRender();
-$gitHubMarkdownRender->execute();
+new GitHubMarkdownRender();
