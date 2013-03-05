@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 if [ -z "$1" ]; then
 	echo "Usage: $0 <github username>"
 	exit
