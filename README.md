@@ -57,6 +57,6 @@ Next, setup URL rewrite for your default virtual host so all requests to `/local
 You should now be able to call a Markdown document with a querystring of `?ghmd` to receive a familiar GitHub style Markdown display. The page footer will also display the total/available API rate limits, or if rendering was cached based on file modification time.
 
 ## CSS style issues
-Markdown display CSS has been lifted (deliberately) from GitHub.com. It's quite possible/likely there are some CSS styles missing to make this complete.
+Markdown display CSS has been lifted (deliberately) from GitHub.com. It's quite possible/likely there are some GitHub markdown CSS styles missing to make this complete.
 
-If anything missing is noted, would really appreciate any Markdown source examples or pull requests to help make things complete.
+If anything missing is noted with your own markdown documents, it would be great to get any source examples or pull requests (add your example(s) to [test.md](test.md)) to help make things complete.

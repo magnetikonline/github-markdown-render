@@ -121,13 +121,14 @@ class GitHubMarkdownRender {
 <head>
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
-	<title>GitHub Markdown render</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1" />
 
+	<title>GitHub Markdown render</title>
 	<style>
 		body {
 			background: #fff;
 			color: #333;
-			font: 14px/1.6 Helvetica,arial,freesans,clean,sans-serif;
+			font: 15px/1.7 Helvetica,arial,freesans,clean,sans-serif;
 			margin: 20px;
 			padding: 0;
 		}
@@ -146,55 +147,53 @@ class GitHubMarkdownRender {
 			padding: 30px;
 		}
 
-		#markdown > :first-child {
+		#markdown > *:first-child {
 			margin-top: 0;
 		}
 
-		#markdown > :last-child {
+		#markdown > *:last-child {
 			margin-bottom: 0;
 		}
 
 		h1,h2,h3,h4,h5,h6 {
 			font-weight: bold;
-			margin: 20px 0 10px;
+			margin: 1em 0 15px;
 			padding: 0;
 		}
 
 		h1 {
-			color: #000;
-			font-size: 28px;
+			border-bottom: 1px solid #ddd;
+			font-size: 2.5em;
 		}
 
 		h2 {
-			border-bottom: 1px solid #ccc;
-			color: #000;
-			font-size: 24px;
+			border-bottom: 1px solid #eee;
+			font-size: 2em;
 		}
 
 		h3 {
-			font-size: 18px;
+			font-size: 1.5em;
 		}
 
 		h4 {
-			font-size: 18px;
+			font-size: 1.2em;
 		}
 
 		h5,h6 {
-			font-size: 14px;
+			font-size: 1em;
 		}
 
 		h6 {
 			color: #777;
 		}
 
-		#markdown > h1:first-child,
-		#markdown > h2:first-child,
-		#markdown > h1:first-child + h2,
-		#markdown > h3:first-child,
-		#markdown > h4:first-child,
-		#markdown > h5:first-child,
-		#markdown > h6:first-child {
-			margin-top: 0;
+		a {
+			color: #4183c4;
+			text-decoration: none;
+		}
+
+		a:hover {
+			text-decoration: underline;
 		}
 
 		blockquote,dl,ol,p,pre,table,ul {
@@ -203,22 +202,26 @@ class GitHubMarkdownRender {
 			padding: 0;
 		}
 
-		ul,ol {
-			padding-left: 30px;
+		blockquote {
+			border-left: 4px solid #ddd;
+			color: #777;
+			padding: 0 15px;
 		}
 
-		ol li > :first-child,
-		ol li ul:first-of-type,
-		ul li > :first-child,
-		ul li ul:first-of-type {
+		blockquote > *:first-child {
 			margin-top: 0;
+		}
+
+		blockquote > *:last-child {
+			margin-bottom: 0
+		}
+
+		ol,ul {
+			padding-left: 30px;
 		}
 
 		ol ol,ol ul,ul ol,ul ul {
 			margin-bottom: 0;
-		}
-
-		h1 + p,h2 + p,h3 + p,h4 + p,h5 + p,h6 + p {
 			margin-top: 0;
 		}
 
@@ -230,8 +233,8 @@ class GitHubMarkdownRender {
 		}
 
 		table tr {
-			border-top: 1px solid #ccc;
 			background: #fff;
+			border-top: 1px solid #ccc;
 		}
 
 		table tr:nth-child(2n) {
@@ -240,7 +243,7 @@ class GitHubMarkdownRender {
 
 		table th,
 		table td {
-			border: 1px solid #ccc;
+			border: 1px solid #ddd;
 			padding: 6px 13px;
 		}
 
@@ -256,7 +259,7 @@ class GitHubMarkdownRender {
 		code,tt {
 			background: #f8f8f8;
 			border-radius: 3px;
-			border: 1px solid #eaeaea;
+			border: 1px solid #ddd;
 			margin: 0 2px;
 			padding: 0 5px;
 		}
@@ -268,15 +271,15 @@ class GitHubMarkdownRender {
 		pre {
 			background: #f8f8f8;
 			border-radius: 3px;
-			border: 1px solid #ccc;
+			border: 1px solid #ddd;
 			font-size: 13px;
 			line-height: 19px;
 			overflow: auto;
 			padding: 6px 10px;
 		}
 
-		pre > code,
-		pre > tt {
+		pre code,
+		pre tt {
 			background: transparent;
 			border: 0;
 			margin: 0;
@@ -284,15 +287,17 @@ class GitHubMarkdownRender {
 		}
 
 		pre > code {
+			background: transparent;
 			white-space: pre;
 		}
 
+		.highlight { background: #fff; }
 		.highlight .bp { color: #999999; }
-		.highlight .c { color: #999988;font-style: italic; }
 		.highlight .c1 { color: #999988;font-style: italic; }
 		.highlight .cm { color: #999988;font-style: italic; }
 		.highlight .cp { color: #999999;font-weight: bold; }
 		.highlight .cs { color: #999999;font-weight: bold;font-style: italic; }
+		.highlight .c { color: #999988;font-style: italic; }
 		.highlight .err { color: #a61717;background: #e3d2d2; }
 		.highlight .gc { color: #999;background: #eaf2f5; }
 		.highlight .gd .x { color: #000000;background: #ffaaaa; }
@@ -308,19 +313,18 @@ class GitHubMarkdownRender {
 		.highlight .gt { color: #aa0000; }
 		.highlight .gu { color: #800080;font-weight: bold; }
 		.highlight .il { color: #009999; }
-		.highlight .k { font-weight: bold; }
 		.highlight .kc { font-weight: bold; }
 		.highlight .kd { font-weight: bold; }
 		.highlight .kn { font-weight: bold; }
 		.highlight .kp { font-weight: bold; }
 		.highlight .kr { font-weight: bold; }
 		.highlight .kt { color: #445588;font-weight: bold; }
-		.highlight .m { color: #009999; }
+		.highlight .k { font-weight: bold; }
 		.highlight .mf { color: #009999; }
 		.highlight .mh { color: #009999; }
 		.highlight .mi { color: #009999; }
 		.highlight .mo { color: #009999; }
-		.highlight .n { color: #333333; }
+		.highlight .m { color: #009999; }
 		.highlight .na { color: #008080; }
 		.highlight .nb { color: #0086b3; }
 		.highlight .nc { color: #445588;font-weight: bold; }
@@ -331,9 +335,9 @@ class GitHubMarkdownRender {
 		.highlight .no { color: #008080; }
 		.highlight .nt { color: #000080; }
 		.highlight .nv { color: #008080; }
-		.highlight .o { font-weight: bold; }
+		.highlight .n { color: #333333; }
 		.highlight .ow { font-weight: bold; }
-		.highlight .s { color: #d14; }
+		.highlight .o { font-weight: bold; }
 		.highlight .s1 { color: #d14; }
 		.highlight .s2 { color: #d14; }
 		.highlight .sb { color: #d14; }
@@ -345,26 +349,18 @@ class GitHubMarkdownRender {
 		.highlight .sr { color: #009926; }
 		.highlight .ss { color: #990073; }
 		.highlight .sx { color: #d14; }
+		.highlight .s { color: #d14; }
 		.highlight .vc { color: #008080; }
 		.highlight .vg { color: #008080; }
 		.highlight .vi { color: #008080; }
 		.highlight .w { color: #bbbbbb; }
-		.type-csharp .highlight .k { color: #0000ff; }
 		.type-csharp .highlight .kt { color: #0000ff; }
+		.type-csharp .highlight .k { color: #0000ff; }
 		.type-csharp .highlight .nc { color: #2b91af; }
 		.type-csharp .highlight .nf { color: #000000;font-weight: normal; }
 		.type-csharp .highlight .nn { color: #000000; }
-		.type-csharp .highlight .s { color: #a31515; }
 		.type-csharp .highlight .sc { color: #a31515; }
-
-		a {
-			color: #4183c4;
-			text-decoration: none;
-		}
-
-		a:hover {
-			text-decoration: underline;
-		}
+		.type-csharp .highlight .s { color: #a31515; }
 
 		#footer {
 			color: #777;
