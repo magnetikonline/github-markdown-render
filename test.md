@@ -23,6 +23,15 @@ This is an image:
 
 ![My image](http://i.imgur.com/UmpOi.gif)
 
+## Blockquotes
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec imperdiet, tellus in mattis adipiscing, mi neque accumsan lectus, vitae sollicitudin nisl nulla et nulla.
+
+> And this is what I said, I said
+
+> that I talk only in Blockquotes.
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec imperdiet, tellus in mattis adipiscing, mi neque accumsan lectus, vitae sollicitudin nisl nulla et nulla.
+
 ## List items
 - Item one
 - Item two

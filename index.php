@@ -206,6 +206,7 @@ class GitHubMarkdownRender {
 			border-left: 4px solid #ddd;
 			color: #777;
 			padding: 0 15px;
+			quotes: none;
 		}
 
 		blockquote > *:first-child {
@@ -214,6 +215,12 @@ class GitHubMarkdownRender {
 
 		blockquote > *:last-child {
 			margin-bottom: 0
+		}
+
+		img {
+			border: 0;
+			box-sizing: border-box;
+			max-width: 100%;
 		}
 
 		ol,ul {
