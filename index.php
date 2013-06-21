@@ -298,7 +298,7 @@ class GitHubMarkdownRender {
 			white-space: pre;
 		}
 
-		.highlight { background: #fff; }
+		.highlight { background: #fff; overflow: hidden; }
 		.highlight .bp { color: #999999; }
 		.highlight .c1 { color: #999988;font-style: italic; }
 		.highlight .cm { color: #999988;font-style: italic; }
