@@ -217,6 +217,16 @@ class GitHubMarkdownRender {
 			margin-bottom: 0
 		}
 
+		hr {
+			background: transparent;
+			border: none;
+			border-bottom: 1px solid #ddd;
+			clear: both;
+			height: 0;
+			margin: 15px 0;
+			overflow: hidden;
+		}
+
 		img {
 			border: 0;
 			box-sizing: border-box;
@@ -296,6 +306,15 @@ class GitHubMarkdownRender {
 		pre > code {
 			background: transparent;
 			white-space: pre;
+		}
+
+		h1 code,h1 tt,
+		h2 code,h2 tt,
+		h3 code,h3 tt,
+		h4 code,h4 tt,
+		h5 code,h5 tt,
+		h6 code,h6 tt {
+			font-size: inherit;
 		}
 
 		.highlight { background: #fff; overflow: hidden; }

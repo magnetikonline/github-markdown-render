@@ -16,6 +16,14 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec imperdiet, tellus
 ###### Heading 6
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec imperdiet, tellus in mattis adipiscing, mi neque accumsan lectus, vitae sollicitudin nisl nulla et nulla.
 
+### Heading 3 with `code block` contained
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec imperdiet, tellus in mattis adipiscing, mi neque accumsan lectus, vitae sollicitudin nisl nulla et nulla.
+
+Dividing line start
+
+---
+Dividing line end
+
 ## Bold, italics, links, images
 Lorem *ipsum* **dolor** sit *amet*, **consectetur** [my link](https://github.com/magnetikonline/) adipiscing elit. Donec imperdiet, tellus in mattis adipiscing, mi neque accumsan lectus, vitae sollicitudin nisl nulla et nulla.
 
