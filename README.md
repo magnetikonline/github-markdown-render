@@ -6,7 +6,7 @@ Handy for authoring/previewing `README.md` files (or any Markdown for that matte
 **Note:** this is intended for local development only, probably not a good idea for production use due to GitHub API rate limits per user.
 
 ## Requires
-- PHP 5.4+ (developed against PHP 5.4.10)
+- PHP 5.4+ (developed against PHP 5.5.8)
 - [PHP cURL extension](http://php.net/manual/en/book.curl.php) (more than likely part of your PHP install)
 - Nginx or Apache URL rewrite support
 

@@ -222,15 +222,29 @@ class GitHubMarkdownRender {
 			border: none;
 			border-bottom: 1px solid #ddd;
 			clear: both;
-			height: 0;
+			height: 4px;
 			margin: 15px 0;
-			overflow: hidden;
 		}
 
 		img {
 			border: 0;
 			box-sizing: border-box;
 			max-width: 100%;
+		}
+
+		kbd {
+			background-color: #ddd;
+			background-image: -moz-linear-gradient(#f1f1f1,#ddd);
+			background-image: -webkit-linear-gradient(#f1f1f1,#ddd);
+			background-image: linear-gradient(#f1f1f1,#ddd);
+			background-repeat: repeat-x;
+			border: 1px solid #ddd;
+			border-bottom-color: #ccc;
+			border-right-color: #ccc;
+			border-radius: 2px;
+			font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
+			line-height: 10px;
+			padding: 1px 4px;
 		}
 
 		ol,ul {
@@ -383,8 +397,8 @@ class GitHubMarkdownRender {
 		.type-csharp .highlight .kt { color: #0000ff; }
 		.type-csharp .highlight .k { color: #0000ff; }
 		.type-csharp .highlight .nc { color: #2b91af; }
-		.type-csharp .highlight .nf { color: #000000;font-weight: normal; }
-		.type-csharp .highlight .nn { color: #000000; }
+		.type-csharp .highlight .nf { color: #000;font-weight: normal; }
+		.type-csharp .highlight .nn { color: #000; }
 		.type-csharp .highlight .sc { color: #a31515; }
 		.type-csharp .highlight .s { color: #a31515; }
 
