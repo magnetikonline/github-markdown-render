@@ -24,8 +24,10 @@ Dividing line start
 ---
 Dividing line end
 
-## Bold, italics, links, images
+## Bold, italics, links, kdb tag, images
 Lorem *ipsum* **dolor** sit *amet*, **consectetur** [my link](https://github.com/magnetikonline/) adipiscing elit. Donec imperdiet, tellus in mattis adipiscing, mi neque accumsan lectus, vitae sollicitudin nisl nulla et nulla.
+
+These is text <kbd>to be entered by the user</kbd>, followed by <kbd>a little more</kbd>.
 
 This is an image:
 
@@ -68,6 +70,20 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec imperdiet, tellus
 - Item three
 - Item four
 
+List items with code blocks contained within.
+
+- Item one
+- Item two
+
+	```sh
+	$ sudo su
+	# apt-get update
+	# apt-get upgrade
+	```
+
+- Item three
+- Item four
+
 ## Tables
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec imperdiet, tellus in mattis adipiscing, mi neque accumsan lectus, vitae sollicitudin nisl nulla et nulla.
 
@@ -89,7 +105,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec imperdiet, tellus
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec imperdiet, tellus in mattis adipiscing, mi neque accumsan lectus, vitae sollicitudin nisl nulla et nulla.
 
 ## Source code
-Some `code markup` used inline.
+Some `code markup` used inline, first example with backticks and language type.
 
 ```php
 $variableName = true;
@@ -102,4 +118,4 @@ exit();
 ```
 
 	This is an indented code block.
-	Line two.
+	Second line of this code block. Lorem ipsum dolor sit amet.
