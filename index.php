@@ -138,7 +138,8 @@ class GitHubMarkdownRender {
 			border-radius: 3px;
 			margin: 0 auto;
 			padding: 3px;
-			width: 914px;
+			width: 784px; /* project home width */
+			width: 920px; /* specific file view width */
 		}
 
 		#markdown {
@@ -291,12 +292,22 @@ class GitHubMarkdownRender {
 			background: #f8f8f8;
 			border-radius: 3px;
 			border: 1px solid #ddd;
-			margin: 0 2px;
-			padding: 0 5px;
+			display: inline-block;
+			line-height: 1.3;
+			margin: 0;
+			overflow: auto;
+			padding: 0;
+			vertical-align: middle;
 		}
 
 		code {
 			white-space: nowrap;
+		}
+
+		code:before,
+		code:after {
+			content: '\\00a0';
+			letter-spacing: -0.2em;
 		}
 
 		pre {
@@ -322,6 +333,11 @@ class GitHubMarkdownRender {
 			white-space: pre;
 		}
 
+		pre > code:before,
+		pre > code:after {
+			content: normal;
+		}
+
 		h1 code,h1 tt,
 		h2 code,h2 tt,
 		h3 code,h3 tt,
@@ -331,7 +347,7 @@ class GitHubMarkdownRender {
 			font-size: inherit;
 		}
 
-		.highlight { background: #fff; overflow: hidden; }
+		.highlight { background: #fff; }
 		.highlight .bp { color: #999999; }
 		.highlight .c1 { color: #999988;font-style: italic; }
 		.highlight .cm { color: #999988;font-style: italic; }
