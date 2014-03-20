@@ -27,7 +27,7 @@ Dividing line end
 ## Bold, italics, strikethrough, links, kdb tag, images
 Lorem *ipsum* **dolor** sit *amet*, ~~meah~~, **consectetur** [my link](https://github.com/magnetikonline/) adipiscing elit. Donec imperdiet, tellus in mattis adipiscing, mi neque accumsan lectus, vitae sollicitudin nisl nulla et nulla.
 
-These is text <kbd>to be entered by the user</kbd>, followed by <kbd>a little more</kbd>.
+This is some text <kbd>to be entered by the user</kbd>, followed by <kbd>a little more</kbd>.
 
 This is an image:
 
