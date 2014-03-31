@@ -31,8 +31,8 @@ Rendered HTML is cached in a PHP session based on markdown file modification tim
 
 ### Configure index.php
 Generate a new [GitHub OAuth token](http://developer.github.com/v3/oauth/#create-a-new-authorization) using either:
-- The supplied [generatetoken.sh](generatetoken.sh) script
-- Directly from your [Authorized Applications](https://github.com/settings/applications) page on GitHub - click **Create new token**
+- The supplied [generatetoken.sh](generatetoken.sh) script.
+- Directly from the [Applications](https://github.com/settings/applications) settings page on GitHub - click **Generate new token** from the **Personal access tokens** table header.
 
 Make a note of the token generated.
 
