@@ -11,13 +11,13 @@ class GitHubMarkdownRender {
 	const DOC_ROOT = '/path/to/docroot';
 
 
-	public function __construct() {
+	public function execute() {
 
-		// validate DOC_ROOT exists
-		if (!is_dir(self::DOC_ROOT)) {
+		// validate DOCUMENT_ROOT exists
+		if (!is_dir(self::DOCUMENT_ROOT)) {
 			$this->renderErrorMessage(
-				'<p>Given <strong>DOC_ROOT</strong> of <strong>' . htmlspecialchars(self::DOC_ROOT) . '</strong> ' .
-				'is not a valid directory, ensure it matches that of your local web server.</p>'
+				'<p>Given <strong>DOCUMENT_ROOT</strong> of <strong>' . htmlspecialchars(self::DOCUMENT_ROOT) . '</strong> ' .
+				'is not a valid directory, ensure it matches that of your local web server document root.</p>'
 			);
 
 			return;
@@ -37,7 +37,7 @@ class GitHubMarkdownRender {
 			// can't find markdown file on disk
 			$this->renderErrorMessage(
 				'<p>Unable to open <strong>' . htmlspecialchars($markdownFilePath) . '</strong></p>' .
-				'<p>Ensure <strong>DOC_ROOT</strong> matches that of your local web server.</p>'
+				'<p>Ensure <strong>DOCUMENT_ROOT</strong> matches that of your local web server.</p>'
 			);
 
 			return;
@@ -66,7 +66,7 @@ class GitHubMarkdownRender {
 			$this->renderErrorMessage(
 				'<p>Unable to access GitHub API</p>' .
 				'<ul>' .
-					'<li>Check your <strong>GITHUB_TOKEN</strong> is correct (maybe revoked?)</li>' .
+					'<li>Check your <strong>GITHUB_PERSONAL_ACCESS_TOKEN</strong> is correct (maybe revoked?)</li>' .
 					'<li>Is GitHub/GitHub API endpoint <strong>' . htmlspecialchars(self::API_URL) . '</strong> accessable?</li>' .
 					'<li>Has rate limit been exceeded? If so, wait until next hour</li>' .
 				'</ul>'
@@ -98,7 +98,7 @@ class GitHubMarkdownRender {
 
 		// request URI must end with self::MARKDOWN_EXT
 		return (preg_match('/\\' . self::MARKDOWN_EXT . '$/',$requestURI))
-			? self::DOC_ROOT . $requestURI
+			? self::DOCUMENT_ROOT . $requestURI
 			: false;
 	}
 
@@ -128,24 +128,20 @@ class GitHubMarkdownRender {
 		body {
 			background: #fff;
 			color: #333;
-			font: 15px/1.7 Helvetica,arial,freesans,clean,sans-serif;
+			font: 16px/1.6 'Helvetica Neue',Helvetica,'Segoe UI',Arial,freesans,sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol';
 			margin: 20px;
 			padding: 0;
 		}
 
 		#frame {
-			background: #eee;
+			border: 1px solid #ddd;
 			border-radius: 3px;
 			margin: 0 auto;
-			padding: 3px;
-			width: 784px; /* project home width */
-			width: 920px; /* specific file view width */
+			width: 978px;
 		}
 
 		#markdown {
-			background: #fff;
-			border: 1px solid #cacaca;
-			padding: 30px;
+			padding: 45px;
 		}
 
 		#markdown > *:first-child {
@@ -158,26 +154,34 @@ class GitHubMarkdownRender {
 
 		h1,h2,h3,h4,h5,h6 {
 			font-weight: bold;
-			margin: 1em 0 15px;
+			line-height: 1.4;
+			margin: 1em 0 16px;
 			padding: 0;
 		}
 
+		h1,h2 {
+			padding-bottom: 0.3em;
+		}
+
 		h1 {
-			border-bottom: 1px solid #ddd;
-			font-size: 2.5em;
+			border-bottom: 1px solid #eee;
+			font-size: 2.25em;
+			line-height: 1.2;
 		}
 
 		h2 {
 			border-bottom: 1px solid #eee;
-			font-size: 2em;
+			font-size: 1.75em;
+			line-height: 1.225;
 		}
 
 		h3 {
 			font-size: 1.5em;
+			line-height: 1.43;
 		}
 
 		h4 {
-			font-size: 1.2em;
+			font-size: 1.25em;
 		}
 
 		h5,h6 {
@@ -198,8 +202,7 @@ class GitHubMarkdownRender {
 		}
 
 		blockquote,dl,ol,p,pre,table,ul {
-			border: 0;
-			margin: 15px 0;
+			margin: 0 0 16px;
 			padding: 0;
 		}
 
@@ -207,7 +210,6 @@ class GitHubMarkdownRender {
 			border-left: 4px solid #ddd;
 			color: #777;
 			padding: 0 15px;
-			quotes: none;
 		}
 
 		blockquote > *:first-child {
@@ -219,49 +221,68 @@ class GitHubMarkdownRender {
 		}
 
 		hr {
-			background: transparent;
+			background: #e7e7e7;
 			border: none;
-			border-bottom: 1px solid #ddd;
-			clear: both;
 			height: 4px;
-			margin: 15px 0;
+			margin: 16px 0;
+			overflow: hidden;
+			padding: 0;
+		}
+
+		hr:before,
+		hr:after {
+			content: '';
+			display: table;
+		}
+
+		hr:after {
+			clear: both;
 		}
 
 		img {
+			background: #fff;
 			border: 0;
-			box-sizing: border-box;
+			box-sizing: content-box;
 			max-width: 100%;
 		}
 
 		kbd {
-			background-color: #ddd;
-			background-image: -moz-linear-gradient(#f1f1f1,#ddd);
-			background-image: -webkit-linear-gradient(#f1f1f1,#ddd);
-			background-image: linear-gradient(#f1f1f1,#ddd);
-			background-repeat: repeat-x;
-			border: 1px solid #ddd;
-			border-bottom-color: #ccc;
-			border-right-color: #ccc;
-			border-radius: 2px;
-			font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
-			line-height: 10px;
-			padding: 1px 4px;
+			background: #fcfcfc;
+			border-bottom-color: #bbb;
+			border-radius: 3px;
+			border: 1px solid #ccc;
+			box-shadow: inset 0 -1px 0 #bbb;
+			color: #555;
+			display: inline-block;
+			font: 11px/10px Consolas,'Liberation Mono',Menlo,Courier,monospace;
+			padding: 3px 5px;
+			vertical-align: middle;
 		}
 
 		ol,ul {
-			padding-left: 30px;
+			padding-left: 2em;
 		}
 
-		ol ol,ol ul,ul ol,ul ul {
+		ol ol,
+		ol ul,
+		ul ol,
+		ul ul {
 			margin-bottom: 0;
 			margin-top: 0;
+		}
+
+		ol ol,
+		ul ol {
+			list-style-type: lower-roman;
+		}
+
+		li > p {
+			margin-top: 16px;
 		}
 
 		table {
 			border-collapse: collapse;
 			border-spacing: 0;
-			font-size: 100%;
-			font: inherit;
 		}
 
 		table tr {
@@ -284,20 +305,16 @@ class GitHubMarkdownRender {
 		}
 
 		code,pre,tt {
-			font-family: Consolas,"Liberation Mono",Courier,monospace;
+			font-family: Consolas,'Liberation Mono',Menlo,Courier,monospace;
 			font-size: 12px;
 		}
 
 		code,tt {
-			background: #f8f8f8;
+			background: rgba(0,0,0,0.04);
 			border-radius: 3px;
-			border: 1px solid #ddd;
-			display: inline-block;
-			line-height: 1.3;
+			font-size: 85%;
 			margin: 0;
-			overflow: auto;
-			padding: 0;
-			vertical-align: middle;
+			padding: 0.2em 0;
 		}
 
 		code {
@@ -305,19 +322,21 @@ class GitHubMarkdownRender {
 		}
 
 		code:before,
-		code:after {
+		code:after,
+		tt:before,
+		tt:after {
 			content: '\\00a0';
 			letter-spacing: -0.2em;
 		}
 
 		pre {
-			background: #f8f8f8;
+			background: #f7f7f7;
 			border-radius: 3px;
-			border: 1px solid #ddd;
-			font-size: 13px;
-			line-height: 19px;
+			font-size: 85%;
+			line-height: 1.45;
+			margin: 0;
 			overflow: auto;
-			padding: 6px 10px;
+			padding: 16px;
 		}
 
 		pre code,
@@ -330,6 +349,7 @@ class GitHubMarkdownRender {
 
 		pre > code {
 			background: transparent;
+			font-size: 100%;
 			white-space: pre;
 		}
 
@@ -347,76 +367,32 @@ class GitHubMarkdownRender {
 			font-size: inherit;
 		}
 
-		.highlight { background: #fff; }
-		.highlight .bp { color: #999999; }
-		.highlight .c1 { color: #999988;font-style: italic; }
-		.highlight .cm { color: #999988;font-style: italic; }
-		.highlight .cp { color: #999999;font-weight: bold; }
-		.highlight .cs { color: #999999;font-weight: bold;font-style: italic; }
-		.highlight .c { color: #999988;font-style: italic; }
-		.highlight .err { color: #a61717;background: #e3d2d2; }
-		.highlight .gc { color: #999;background: #eaf2f5; }
-		.highlight .gd .x { color: #000000;background: #ffaaaa; }
-		.highlight .gd { color: #000000;background: #ffdddd; }
-		.highlight .ge { font-style: italic; }
-		.highlight .gh { color: #999999; }
-		.highlight .gi .x { color: #000000;background: #aaffaa; }
-		.highlight .gi { color: #000000;background: #ddffdd; }
-		.highlight .go { color: #888888; }
-		.highlight .gp { color: #555555; }
-		.highlight .gr { color: #aa0000; }
-		.highlight .gs { font-weight: bold; }
-		.highlight .gt { color: #aa0000; }
-		.highlight .gu { color: #800080;font-weight: bold; }
-		.highlight .il { color: #009999; }
-		.highlight .kc { font-weight: bold; }
-		.highlight .kd { font-weight: bold; }
-		.highlight .kn { font-weight: bold; }
-		.highlight .kp { font-weight: bold; }
-		.highlight .kr { font-weight: bold; }
-		.highlight .kt { color: #445588;font-weight: bold; }
-		.highlight .k { font-weight: bold; }
-		.highlight .mf { color: #009999; }
-		.highlight .mh { color: #009999; }
-		.highlight .mi { color: #009999; }
-		.highlight .mo { color: #009999; }
-		.highlight .m { color: #009999; }
-		.highlight .na { color: #008080; }
-		.highlight .nb { color: #0086b3; }
-		.highlight .nc { color: #445588;font-weight: bold; }
-		.highlight .ne { color: #990000;font-weight: bold; }
-		.highlight .nf { color: #990000;font-weight: bold; }
-		.highlight .ni { color: #800080; }
-		.highlight .nn { color: #555555; }
-		.highlight .no { color: #008080; }
-		.highlight .nt { color: #000080; }
-		.highlight .nv { color: #008080; }
-		.highlight .n { color: #333333; }
-		.highlight .ow { font-weight: bold; }
-		.highlight .o { font-weight: bold; }
-		.highlight .s1 { color: #d14; }
-		.highlight .s2 { color: #d14; }
-		.highlight .sb { color: #d14; }
-		.highlight .sc { color: #d14; }
-		.highlight .sd { color: #d14; }
-		.highlight .se { color: #d14; }
-		.highlight .sh { color: #d14; }
-		.highlight .si { color: #d14; }
-		.highlight .sr { color: #009926; }
-		.highlight .ss { color: #990073; }
-		.highlight .sx { color: #d14; }
-		.highlight .s { color: #d14; }
-		.highlight .vc { color: #008080; }
-		.highlight .vg { color: #008080; }
-		.highlight .vi { color: #008080; }
-		.highlight .w { color: #bbbbbb; }
-		.type-csharp .highlight .kt { color: #0000ff; }
-		.type-csharp .highlight .k { color: #0000ff; }
-		.type-csharp .highlight .nc { color: #2b91af; }
-		.type-csharp .highlight .nf { color: #000;font-weight: normal; }
-		.type-csharp .highlight .nn { color: #000; }
-		.type-csharp .highlight .sc { color: #a31515; }
-		.type-csharp .highlight .s { color: #a31515; }
+		.highlight { margin-bottom: 16px; }
+
+		.pl-c { color: #969896; }
+		.pl-c1,.pl-s .pl-v { color: #0086b3; }
+		.pl-e,.pl-en { color: #795da3; }
+		.pl-ent { color: #63a35c; }
+		.pl-id { color: #b52a1d; }
+		.pl-ii { background-color: #b52a1d;color: #f8f8f8; }
+		.pl-k { color: #a71d5d; }
+		.pl-mb { color: #333;font-weight: bold; }
+		.pl-md { background-color: #ffecec;color: #bd2c00; }
+		.pl-mdr { color: #795da3;font-weight: bold; }
+		.pl-mh,.pl-mh .pl-en,.pl-ms { color: #1d3e81;font-weight: bold; }
+		.pl-mi { color: #333;font-style: italic; }
+		.pl-mi1 { background-color: #eaffea;color: #55a532; }
+		.pl-ml { color: #693a17; }
+		.pl-mo { color: #1d3e81; }
+		.pl-mq { color: #008080; }
+		.pl-pds,.pl-s,
+		.pl-s .pl-pse .pl-s1,
+		.pl-s .pl-s1,.pl-smi { color: #333; }
+		.pl-sr .pl-cce { color: #63a35c;font-weight: bold; }
+		.pl-sr .pl-sra,
+		.pl-sr .pl-sre { color: #183691; }
+		.pl-sr,.pl-sr .pl-cce,
+		.pl-v { color: #ed6a43; }
 
 		#footer {
 			color: #777;
@@ -424,7 +400,7 @@ class GitHubMarkdownRender {
 			margin: 10px auto;
 			text-align: right;
 			white-space: nowrap;
-			width: 914px;
+			width: 978px;
 		}
 	</style>
 </head>
@@ -450,7 +426,11 @@ EOT;
 
 		// start session, look for file path in session space
 		session_start();
-		if (!isset($_SESSION[self::CACHE_SESSION_KEY][$markdownFilePath])) return false;
+
+		if (!isset($_SESSION[self::CACHE_SESSION_KEY][$markdownFilePath])) {
+			// file path not found in cache
+			return false;
+		}
 
 		// file path exists - compare file modification time to that in cache
 		$cacheData = $_SESSION[self::CACHE_SESSION_KEY][$markdownFilePath];
@@ -482,7 +462,7 @@ EOT;
 				CURLOPT_HTTPHEADER => [
 					'Content-Type: ' . self::CONTENT_TYPE,
 					'User-Agent: ' . self::USER_AGENT,
-					'Authorization: token ' . self::GITHUB_TOKEN
+					'Authorization: token ' . self::GITHUB_PERSONAL_ACCESS_TOKEN
 				],
 				CURLOPT_POST => true,
 				CURLOPT_POSTFIELDS => $markdownSource,
@@ -549,4 +529,4 @@ EOT;
 }
 
 
-new GitHubMarkdownRender();
+(new GitHubMarkdownRender())->execute();

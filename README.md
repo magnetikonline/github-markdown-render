@@ -40,12 +40,12 @@ Update the following constants at the top of `index.php` in the `GitHubMarkdownR
 
 <table>
 	<tr>
-		<td>GITHUB_TOKEN</td>
-		<td>Your generated GitHub OAuth token. Anonymous GitHub API calls are <a href="http://developer.github.com/v3/#rate-limiting">limited to 60 per hour</a>, providing user credentials ramps this up to a more usable 5000 requests per hour.</td>
+		<td>GITHUB_PERSONAL_ACCESS_TOKEN</td>
+		<td>Your generated GitHub personal access token. Anonymous GitHub API calls are <a href="http://developer.github.com/v3/#rate-limiting">limited to 60 per hour</a>, providing user credentials ramps this up to a more usable 5000 requests per hour.</td>
 	</tr>
 	<tr>
-		<td>DOC_ROOT</td>
-		<td>Your local web server document root. (Assuming you are serving up all your project(s) directories over your default virtual host.)</td>
+		<td>DOCUMENT_ROOT</td>
+		<td>Your local web server document root. Assuming you are serving up all your project(s) directories over your default virtual host.</td>
 	</tr>
 </table>
 
