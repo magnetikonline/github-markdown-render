@@ -334,7 +334,6 @@ class GitHubMarkdownRender {
 			border-radius: 3px;
 			font-size: 85%;
 			line-height: 1.45;
-			margin: 0;
 			overflow: auto;
 			padding: 16px;
 		}

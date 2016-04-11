@@ -5,6 +5,14 @@ Handy for authoring/previewing `README.md` files (or any Markdown for that matte
 
 **Note:** this is intended for local development only, probably not a good idea for production use due to GitHub API rate limits per user.
 
+- [Requires](#requires)
+- [Usage](#usage)
+- [Install](#install)
+	- [Configure index.php](#configure-indexphp)
+	- [Setup URL rewrite rules](#setup-url-rewrite-rules)
+	- [Test](#test)
+- [CSS style issues](#css-style-issues)
+
 ## Requires
 - PHP 5.4+
 - [PHP cURL extension](http://php.net/manual/en/book.curl.php) (more than likely already part of your PHP install)
@@ -36,7 +44,7 @@ Generate a new [GitHub OAuth token](http://developer.github.com/v3/oauth/#create
 
 Make a note of the token generated.
 
-Update the following constants at the top of `index.php` in the `GitHubMarkdownRender` class:
+Update the following constants [at the top of `index.php`](index.php#L10-L11) in the `GitHubMarkdownRender` class:
 
 <table>
 	<tr>
