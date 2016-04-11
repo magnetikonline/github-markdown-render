@@ -460,9 +460,9 @@ EOT;
 			[
 				CURLOPT_HEADER => true,
 				CURLOPT_HTTPHEADER => [
+					'Authorization: token ' . self::GITHUB_PERSONAL_ACCESS_TOKEN,
 					'Content-Type: ' . self::CONTENT_TYPE,
-					'User-Agent: ' . self::USER_AGENT,
-					'Authorization: token ' . self::GITHUB_PERSONAL_ACCESS_TOKEN
+					'User-Agent: ' . self::USER_AGENT
 				],
 				CURLOPT_POST => true,
 				CURLOPT_POSTFIELDS => $markdownSource,
@@ -487,7 +487,10 @@ EOT;
 		while (true) {
 			// seek next CRLF, if not found bail out
 			$nextEOLpos = strpos($response,"\r\n");
-			if ($nextEOLpos === false) break;
+			if ($nextEOLpos === false) {
+				// end of response hit
+				break;
+			}
 
 			// extract header line and pop off from $response
 			$headerLine = substr($response,0,$nextEOLpos);
@@ -518,6 +521,13 @@ EOT;
 				$rateRemain = intval($match[1]);
 			}
 		}
+
+		// update id="" values of heading anchor elements from generated Markdown -> HTML
+		$response = preg_replace(
+			'/<a id="user-content-([^"]+)" class="anchor" href="/',
+			'<a id="$1" class="anchor" href="/',
+			$response
+		);
 
 		return [
 			'ok' => ($httpStatusOk && $rateLimit && $rateRemain),
