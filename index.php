@@ -7,8 +7,8 @@ class GitHubMarkdownRender {
 	const MARKDOWN_EXT = '.md';
 	const CACHE_SESSION_KEY = 'ghmarkdownrender';
 
-	const GITHUB_TOKEN = 'token';
-	const DOC_ROOT = '/path/to/docroot';
+	const GITHUB_PERSONAL_ACCESS_TOKEN = 'token';
+	const DOCUMENT_ROOT = '/path/to/docroot';
 
 
 	public function execute() {
