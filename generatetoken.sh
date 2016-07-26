@@ -1,7 +1,7 @@
 #!/bin/bash -e
 
 if [[ -z $1 ]]; then
-	echo "Usage: $(basename $0) <GitHub username>"
+	echo "Usage: $(basename "$0") <GitHub username>"
 	exit 1
 fi
 
