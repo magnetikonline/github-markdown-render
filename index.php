@@ -2,6 +2,7 @@
 class GitHubMarkdownRender {
 
 	const API_URL = 'https://api.github.com/markdown/raw';
+	const GITHUB_API_VERSION_ACCEPT = 'application/vnd.github.v3+json';
 	const CONTENT_TYPE = 'text/x-markdown';
 	const USER_AGENT = 'magnetikonline/ghmarkdownrender 1.0';
 	const MARKDOWN_EXT = '.md';
@@ -457,6 +458,7 @@ EOT;
 			[
 				CURLOPT_HEADER => true,
 				CURLOPT_HTTPHEADER => [
+					'Accept: ' . self::GITHUB_API_VERSION_ACCEPT,
 					'Authorization: token ' . self::GITHUB_PERSONAL_ACCESS_TOKEN,
 					'Content-Type: ' . self::CONTENT_TYPE,
 					'User-Agent: ' . self::USER_AGENT
