@@ -128,7 +128,7 @@ class GitHubMarkdownRender {
 		body {
 			background: #fff;
 			color: #333;
-			font: 16px/1.6 'Helvetica Neue',Helvetica,'Segoe UI',Arial,freesans,sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol';
+			font: 16px/1.5 -apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol';
 			margin: 20px;
 			padding: 0;
 		}
@@ -153,9 +153,9 @@ class GitHubMarkdownRender {
 		}
 
 		h1,h2,h3,h4,h5,h6 {
-			font-weight: bold;
-			line-height: 1.4;
-			margin: 1em 0 16px;
+			font-weight: 600;
+			line-height: 1.25;
+			margin: 24px 0 16px;
 			padding: 0;
 		}
 
@@ -165,31 +165,29 @@ class GitHubMarkdownRender {
 
 		h1 {
 			border-bottom: 1px solid #eee;
-			font-size: 2.25em;
-			line-height: 1.2;
+			font-size: 2em;
 		}
 
 		h2 {
 			border-bottom: 1px solid #eee;
-			font-size: 1.75em;
-			line-height: 1.225;
+			font-size: 1.5em;
 		}
 
 		h3 {
-			font-size: 1.5em;
-			line-height: 1.43;
-		}
-
-		h4 {
 			font-size: 1.25em;
 		}
 
-		h5,h6 {
+		h4 {
 			font-size: 1em;
+		}
+
+		h5 {
+			font-size: 0.875em;
 		}
 
 		h6 {
 			color: #777;
+			font-size: 0.85em;
 		}
 
 		a {
@@ -207,9 +205,9 @@ class GitHubMarkdownRender {
 		}
 
 		blockquote {
-			border-left: 4px solid #ddd;
+			border-left: 0.25em solid #ddd;
 			color: #777;
-			padding: 0 15px;
+			padding: 0 1em;
 		}
 
 		blockquote > *:first-child {
@@ -222,9 +220,9 @@ class GitHubMarkdownRender {
 
 		hr {
 			background: #e7e7e7;
-			border: none;
-			height: 4px;
-			margin: 16px 0;
+			border: 0;
+			height: 0.25em;
+			margin: 24px 0;
 			overflow: hidden;
 			padding: 0;
 		}
@@ -274,6 +272,10 @@ class GitHubMarkdownRender {
 		ol ol,
 		ul ol {
 			list-style-type: lower-roman;
+		}
+
+		li + li {
+			margin-top: 0.25em;
 		}
 
 		li > p {
@@ -384,13 +386,9 @@ class GitHubMarkdownRender {
 		.pl-ml { color: #693a17; }
 		.pl-mo { color: #1d3e81; }
 		.pl-mq { color: #008080; }
-		.pl-pds,.pl-s,
-		.pl-s .pl-pse .pl-s1,
-		.pl-s .pl-s1,.pl-smi { color: #333; }
+		.pl-s,.pl-pds,.pl-s .pl-pse .pl-s1,.pl-sr,.pl-sr .pl-cce,.pl-sr .pl-sre,.pl-sr .pl-sra { color: #183691; }
+		.pl-smi,.pl-s .pl-s1 { color: #333; }
 		.pl-sr .pl-cce { color: #63a35c;font-weight: bold; }
-		.pl-sr .pl-sra,
-		.pl-sr .pl-sre { color: #183691; }
-		.pl-sr,.pl-sr .pl-cce,
 		.pl-v { color: #ed6a43; }
 
 		#footer {
