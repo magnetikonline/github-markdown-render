@@ -87,20 +87,11 @@ List items with code blocks contained within.
 ## Tables
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec imperdiet, tellus in mattis adipiscing, mi neque accumsan lectus, vitae sollicitudin nisl nulla et nulla.
 
-<table>
-	<tr>
-		<th>Header 1</td>
-		<th>Header 2</td>
-	</tr>
-	<tr>
-		<td>Item 1</td>
-		<td>Item 2</td>
-	</tr>
-	<tr>
-		<td>Item 3</td>
-		<td>Item 4</td>
-	</tr>
-</table>
+Header 1 | Header 2
+--- | ---
+Item 1 | Item 2
+Item 3 | Item 4
+`Item 5` | *Item 6*
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec imperdiet, tellus in mattis adipiscing, mi neque accumsan lectus, vitae sollicitudin nisl nulla et nulla.
 
