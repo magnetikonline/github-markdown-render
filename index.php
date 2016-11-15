@@ -392,6 +392,31 @@ class GitHubMarkdownRender {
 		.pl-sr .pl-cce { color: #63a35c;font-weight: bold; }
 		.pl-v { color: #ed6a43; }
 
+		.octicon.octicon-link:before {
+		    fill: currentColor;
+		    vertical-align: text-bottom;
+		    content: '🔗';
+		    font-size:80%;
+		}
+		h1:hover .anchor .octicon-link, h2:hover .anchor .octicon-link, h3:hover .anchor .octicon-link, h4:hover .anchor .octicon-link, h5:hover .anchor .octicon-link, h6:hover .anchor .octicon-link {
+		    visibility: visible;
+		}
+		h1:hover .anchor, h2:hover .anchor, h3:hover .anchor, h4:hover .anchor, h5:hover .anchor, h6:hover .anchor {
+		    opacity: 1;
+		    text-decoration: none
+		}
+		.anchor .octicon-link {
+		    color: #000;
+		    /*vertical-align: middle;*/
+		    visibility: hidden;
+		}
+		.anchor{
+		    float: left;
+		    padding-right: 4px;
+		    margin-left: -20px;
+		    line-height: 1;
+		}
+
 		#footer {
 			color: #777;
 			font-size: 11px;
