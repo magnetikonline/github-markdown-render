@@ -15,60 +15,61 @@ Handy for authoring/previewing `README.md` files (or any Markdown for that matte
 
 ## Requires
 - PHP 5.4+
-- [PHP cURL extension](http://php.net/manual/en/book.curl.php) (more than likely already part of your PHP install)
-- Nginx or Apache URL rewrite support
+- [PHP cURL extension](http://php.net/manual/en/book.curl.php) - more than likely already part of your PHP install/compile.
+- Nginx or Apache URL rewrite support.
 
 ## Usage
-Your project(s) Markdown files are accessible on your local web server in plain text, for example:
+Markdown files are accessible from a local web server and returned in plain text, for example:
 
-	http://localhost/projects/ghmarkdownrender/README.md
-	http://localhost/projects/thummer/README.md
-	http://localhost/projects/unrarallthefiles/README.md
-	http://localhost/projects/webserverinstall.ubuntu12.04/install.md
+```
+http://localhost/projects/ghmarkdownrender/README.md
+http://localhost/projects/thummer/README.md
+http://localhost/projects/unrarallthefiles/README.md
+http://localhost/projects/webserverinstall.ubuntu12.04/install.md
+```
 
-To view rendered Markdown using the same parsing and styling as GitHub project pages, request files with querystring switch:
+To view rendered Markdown, request same URIs with a querystring switch:
 
-	http://localhost/projects/ghmarkdownrender/README.md?ghmd
-	http://localhost/projects/thummer/README.md?ghmd
-	http://localhost/projects/unrarallthefiles/README.md?ghmd
-	http://localhost/projects/webserverinstall.ubuntu12.04/install.md?ghmd
+```
+http://localhost/projects/ghmarkdownrender/README.md?ghmd
+http://localhost/projects/thummer/README.md?ghmd
+http://localhost/projects/unrarallthefiles/README.md?ghmd
+http://localhost/projects/webserverinstall.ubuntu12.04/install.md?ghmd
+```
 
-Rendered HTML is cached in a PHP session based on markdown file modification time to reduce repeated GitHub API calls for the same file content.
+Rendered result is cached against the last modification time of each Markdown document to reduce repeated GitHub API calls for identical source content.
 
 ## Install
 
 ### Configure index.php
-Generate a new [GitHub OAuth token](http://developer.github.com/v3/oauth/#create-a-new-authorization) using either:
-- The supplied [generatetoken.sh](generatetoken.sh) bash script.
-- Directly from the [Personal access tokens](https://github.com/settings/tokens) settings page for your GitHub account - click **Generate new token**, no scope permissions are required.
+Generate a new [GitHub OAuth](https://developer.github.com/v3/oauth/) personal access token using either:
+- The [generatetoken.sh](generatetoken.sh) bash script.
+- Directly from the [Personal access tokens](https://github.com/settings/tokens) page within your GitHub account:
+	- Click **Generate new token**.
+	- No scope permissions are required.
 
-Make a note of the token generated.
+Note down the token generated.
 
-Update the following constants [at the top of `index.php`](index.php#L10-L11) in the `GitHubMarkdownRender` class:
+Update the following constants [within `index.php`](index.php#L11-L12) in the `GitHubMarkdownRender` class:
 
-<table>
-	<tr>
-		<td>GITHUB_PERSONAL_ACCESS_TOKEN</td>
-		<td>Your generated GitHub personal access token. Anonymous GitHub API calls are <a href="http://developer.github.com/v3/#rate-limiting">limited to 60 per hour</a>, providing user credentials ramps this up to a more usable 5000 requests per hour.</td>
-	</tr>
-	<tr>
-		<td>DOCUMENT_ROOT</td>
-		<td>Your local web server document root. Assuming you are serving up all your project(s) directories over your default virtual host.</td>
-	</tr>
-</table>
+Setting | Description
+--- | ---
+`GITHUB_PERSONAL_ACCESS_TOKEN` | Your generated GitHub personal access token. Anonymous GitHub API calls are [limited to 60 per hour](http://developer.github.com/v3/#rate-limiting), providing user credentials ramps this up to a more usable 5000 requests per hour.
+`DOCUMENT_ROOT` | Web server document root location on the file system. Assumes you are serving up all your project(s) directories under a default virtual host.
 
 ### Setup URL rewrite rules
-Next, setup URL rewrite for your default virtual host so all requests to `/local/path/*.md?ghmd` are rewritten to `/path/to/ghmarkdownrender/index.php`. Refer to the supplied `rewrite.nginx.conf` & `rewrite.apache.conf` for examples.
+- Configure a URL rewrite for your default virtual host so all requests to `/local/path/*.md?ghmd` are rewritten to `/path/to/ghmarkdownrender/index.php`.
+- Refer to the supplied [`rewrite.nginx.conf`](rewrite.nginx.conf) & [`rewrite.apache.conf`](rewrite.apache.conf) for examples.
 
 **Note:**
-- You may want to have requested raw Markdown files (e.g. `http://localhost/projects/ghmarkdownrender/README.md`) served up with a MIME type such as `text/plain` for convenience.
-	- Nginx by default serves up unknown file types based on extension as `application/octet-stream`, forcing a browser download - see `/etc/nginx/mime.types` and modify to suit.
-- I haven't had a chance to test `rewrite.apache.conf` it should do the trick, would appreciate a pull-request if it needs fixing.
+- You may wish to have requested raw Markdown files served up with a MIME type such as `text/plain` for convenience.
+	- Nginx by default serves up unknown file types based on extension as `application/octet-stream`, forcing a browser download - see `/etc/nginx/mime.types` within your Nginx installation and modify to suit.
+- Haven't tested `rewrite.apache.conf` - it should do the trick, would appreciate a pull-request if it needs fixing.
 
 ### Test
-You should now be able to call a Markdown document with a querystring of `?ghmd` to receive a familiar GitHub style Markdown display. The page footer will also display the total/available API rate limits, or if rendering was cached based on file modification time.
+You should now be able to call a Markdown document with a querystring of `?ghmd` to receive a familiar GitHub style Markdown display. The page footer will also display the total/available API rate limits, or if rendering was returned from cache.
 
 ## CSS style issues
-Markdown display CSS has been lifted (deliberately) from GitHub.com. It's quite possible/likely there are some GitHub markdown CSS styles missing to make this complete.
+Markdown display CSS has been lifted (deliberately) from GitHub.com. It's quite possible/likely there are some CSS styles missing to make this complete.
 
 If anything missing is noted with your own markdown documents, it would be great to get any source examples or pull requests (add your example(s) to [test.md](test.md)) to help make things complete.
