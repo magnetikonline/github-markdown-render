@@ -17,8 +17,8 @@ class GitHubMarkdownRender {
 		// validate DOCUMENT_ROOT exists
 		if (!is_dir(self::DOCUMENT_ROOT)) {
 			$this->renderErrorMessage(
-				'<p>Given <strong>DOCUMENT_ROOT</strong> of <strong>' . htmlspecialchars(self::DOCUMENT_ROOT) . '</strong> ' .
-				'is not a valid directory, ensure it matches that of your local web server document root.</p>'
+				'<p>Given <code>DOCUMENT_ROOT</code> of <code>' . htmlspecialchars(self::DOCUMENT_ROOT) . '</code> is not a valid directory.</p>' .
+				'<p>Ensure it matches that of your local web server document root.</p>'
 			);
 
 			return;
@@ -28,7 +28,7 @@ class GitHubMarkdownRender {
 		if (($markdownFilePath = $this->getRequestedPageFilePath()) === false) {
 			$this->renderErrorMessage(
 				'<p>Unable to determine requested Markdown page.</p>' .
-				'<p>URI must end with an <strong>' . self::MARKDOWN_EXT . '</strong> file extension.</p>'
+				'<p>URI must end with an <code>' . self::MARKDOWN_EXT . '</code> file extension.</p>'
 			);
 
 			return;
@@ -37,8 +37,8 @@ class GitHubMarkdownRender {
 		if (!is_file($markdownFilePath)) {
 			// can't find markdown file on disk
 			$this->renderErrorMessage(
-				'<p>Unable to open <strong>' . htmlspecialchars($markdownFilePath) . '</strong></p>' .
-				'<p>Ensure <strong>DOCUMENT_ROOT</strong> matches that of your local web server.</p>'
+				'<p>Unable to open <code>' . htmlspecialchars($markdownFilePath) . '</code>.</p>' .
+				'<p>Ensure <code>DOCUMENT_ROOT</code> matches that of your local web server.</p>'
 			);
 
 			return;
@@ -65,11 +65,11 @@ class GitHubMarkdownRender {
 		if (!$response['ok']) {
 			// error calling API
 			$this->renderErrorMessage(
-				'<p>Unable to access GitHub API</p>' .
+				'<p>Unable to access GitHub API:</p>' .
 				'<ul>' .
-					'<li>Check your <strong>GITHUB_PERSONAL_ACCESS_TOKEN</strong> is correct (maybe revoked?)</li>' .
-					'<li>Is GitHub/GitHub API endpoint <strong>' . htmlspecialchars(self::API_URL) . '</strong> accessable?</li>' .
-					'<li>Has rate limit been exceeded? If so, wait until next hour</li>' .
+					'<li>Check your <code>GITHUB_PERSONAL_ACCESS_TOKEN</code> is correct (maybe revoked?)</li>' .
+					'<li>Is GitHub API endpoint <code>' . htmlspecialchars(self::API_URL) . '</code> accessible?</li>' .
+					'<li>Rate limit exceeded? If so, wait until next hour</li>' .
 				'</ul>'
 			);
 
@@ -77,7 +77,10 @@ class GitHubMarkdownRender {
 		}
 
 		// save markdown HTML back to cache
-		$this->setMarkdownHtmlToCache($markdownFilePath,$response['html']);
+		$this->setMarkdownHtmlToCache(
+			$markdownFilePath,
+			$response['html']
+		);
 
 		// render markdown HTML from API response
 		echo(
