@@ -194,6 +194,43 @@ class GitHubMarkdownRender {
 			font-size: 0.85em;
 		}
 
+		.anchor {
+			float: left;
+			line-height: 1;
+			margin-left: -20px;
+			outline: none;
+			padding-right: 4px;
+		}
+
+		.anchor > .octicon-link {
+			color: #000;
+			vertical-align: baseline;
+			visibility: hidden;
+		}
+
+		.anchor > .octicon-link:before {
+			content: '\\1f517';
+			font-size: 16px;
+		}
+
+		h1:hover > .anchor,
+		h2:hover > .anchor,
+		h3:hover > .anchor,
+		h4:hover > .anchor,
+		h5:hover > .anchor,
+		h6:hover > .anchor {
+			text-decoration: none;
+		}
+
+		h1:hover > .anchor > .octicon-link,
+		h2:hover > .anchor > .octicon-link,
+		h3:hover > .anchor > .octicon-link,
+		h4:hover > .anchor > .octicon-link,
+		h5:hover > .anchor > .octicon-link,
+		h6:hover > .anchor > .octicon-link {
+			visibility: visible;
+		}
+
 		a {
 			color: #4183c4;
 			text-decoration: none;
