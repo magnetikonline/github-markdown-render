@@ -67,9 +67,9 @@ class GitHubMarkdownRender {
 			$this->renderErrorMessage(
 				'<p>Unable to access GitHub API:</p>' .
 				'<ul>' .
-					'<li>Check your <code>GITHUB_PERSONAL_ACCESS_TOKEN</code> is correct (maybe revoked?)</li>' .
-					'<li>Is GitHub API endpoint <code>' . htmlspecialchars(self::API_URL) . '</code> accessible?</li>' .
-					'<li>Rate limit exceeded? If so, wait until next hour</li>' .
+					'<li>Check your <code>GITHUB_PERSONAL_ACCESS_TOKEN</code> is correct (maybe revoked?).</li>' .
+					'<li>API endpoint <code>' . htmlspecialchars(self::API_URL) . '</code> accessible?</li>' .
+					'<li>Rate limit exceeded? If so, wait until next hour.</li>' .
 				'</ul>'
 			);
 
