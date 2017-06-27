@@ -70,15 +70,19 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec imperdiet, tellus
 - Item three
 - Item four
 
-List items with code blocks contained within.
+List items with code block contained within.
 
 - Item one
 - Item two
 
 	```sh
 	$ sudo su
-	# apt-get update
-	# apt-get upgrade
+
+	# about to do magic
+	myValue="apples"
+	echo "Look at my $myValue"
+
+	[[ -x "myfile.txt" ]] && echo "Found!"
 	```
 
 - Item three

@@ -260,7 +260,7 @@ class GitHubMarkdownRender {
 		}
 
 		hr {
-			background: #e7e7e7;
+			background: #e1e4e8;
 			border: 0;
 			height: 0.25em;
 			margin: 24px 0;
@@ -286,14 +286,14 @@ class GitHubMarkdownRender {
 		}
 
 		kbd {
-			background: #fcfcfc;
-			border-bottom-color: #bbb;
+			background: #fafbfc;
+			border: 1px solid #c6cbd1;
+			border-bottom-color: #959da5;
 			border-radius: 3px;
-			border: 1px solid #ccc;
-			box-shadow: inset 0 -1px 0 #bbb;
-			color: #555;
+			box-shadow: inset 0 -1px 0 #959da5;
+			color: #444d56;
 			display: inline-block;
-			font: 11px/10px Consolas,'Liberation Mono',Menlo,Courier,monospace;
+			font: 11px/10px 'SFMono-Regular',Consolas,'Liberation Mono',Menlo,Courier,monospace;
 			padding: 3px 5px;
 			vertical-align: middle;
 		}
@@ -334,7 +334,7 @@ class GitHubMarkdownRender {
 		}
 
 		table tr:nth-child(2n) {
-			background: #f8f8f8;
+			background: #f6f8fa;
 		}
 
 		table th,
@@ -353,7 +353,7 @@ class GitHubMarkdownRender {
 		}
 
 		code,tt {
-			background: rgba(0,0,0,0.04);
+			background: rgba(27,31,35,0.05);
 			border-radius: 3px;
 			font-size: 85%;
 			margin: 0;
@@ -373,7 +373,7 @@ class GitHubMarkdownRender {
 		}
 
 		pre {
-			background: #f7f7f7;
+			background: #f6f8fa;
 			border-radius: 3px;
 			font-size: 85%;
 			line-height: 1.45;
@@ -411,26 +411,30 @@ class GitHubMarkdownRender {
 
 		.highlight { margin-bottom: 16px; }
 
-		.pl-c { color: #969896; }
-		.pl-c1,.pl-s .pl-v { color: #0086b3; }
-		.pl-e,.pl-en { color: #795da3; }
-		.pl-ent { color: #63a35c; }
-		.pl-id { color: #b52a1d; }
-		.pl-ii { background-color: #b52a1d;color: #f8f8f8; }
-		.pl-k { color: #a71d5d; }
-		.pl-mb { color: #333;font-weight: bold; }
-		.pl-md { background-color: #ffecec;color: #bd2c00; }
-		.pl-mdr { color: #795da3;font-weight: bold; }
-		.pl-mh,.pl-mh .pl-en,.pl-ms { color: #1d3e81;font-weight: bold; }
-		.pl-mi { color: #333;font-style: italic; }
-		.pl-mi1 { background-color: #eaffea;color: #55a532; }
-		.pl-ml { color: #693a17; }
-		.pl-mo { color: #1d3e81; }
-		.pl-mq { color: #008080; }
-		.pl-s,.pl-pds,.pl-s .pl-pse .pl-s1,.pl-sr,.pl-sr .pl-cce,.pl-sr .pl-sre,.pl-sr .pl-sra { color: #183691; }
-		.pl-smi,.pl-s .pl-s1 { color: #333; }
-		.pl-sr .pl-cce { color: #63a35c;font-weight: bold; }
-		.pl-v { color: #ed6a43; }
+		.pl-ba { color: #586069; }
+		.pl-bu { color: #b31d28; }
+		.pl-c { color: #6a737d; }
+		.pl-c1,.pl-s .pl-v { color: #005cc5; }
+		.pl-c2 { background-color: #d73a49;color: #fafbfc; }
+		.pl-corl { color: #032f62;text-decoration: underline; }
+		.pl-e,.pl-en { color: #6f42c1; }
+		.pl-ent { color: #22863a; }
+		.pl-ii { background-color: #b31d28;color: #fafbfc; }
+		.pl-k { color: #d73a49; }
+		.pl-mb { color: #24292e;font-weight: bold; }
+		.pl-mc { background-color: #ffebda;color: #e36209; }
+		.pl-md { background-color: #ffeef0;color: #b31d28; }
+		.pl-mdr { color: #6f42c1;font-weight: bold; }
+		.pl-mh,.pl-mh .pl-en,.pl-ms { color: #005cc5;font-weight: bold; }
+		.pl-mi { color: #24292e;font-style: italic; }
+		.pl-mi1 { background-color: #f0fff4;color: #22863a; }
+		.pl-mi2 { background-color: #005cc5;color: #f6f8fa; }
+		.pl-ml { color: #735c0f; }
+		.pl-s,.pl-pds,.pl-s .pl-pse .pl-s1,.pl-sr,.pl-sr .pl-cce,.pl-sr .pl-sre,.pl-sr .pl-sra { color: #032f62; }
+		.pl-sg { color: #959da5; }
+		.pl-smi,.pl-s .pl-s1 { color: #24292e; }
+		.pl-sr .pl-cce { color: #22863a;font-weight: bold; }
+		.pl-v,.pl-smw { color: #e36209; }
 
 		#footer {
 			color: #777;

@@ -72,4 +72,4 @@ You should now be able to call a Markdown document with a querystring of `?ghmd`
 ## CSS style issues
 Markdown display CSS has been lifted (deliberately) from GitHub.com. It's quite possible/likely there are some CSS styles missing to make this complete.
 
-If anything missing is noted with your own markdown documents, it would be great to get any source examples or pull requests (add your example(s) to [test.md](test.md)) to help make things complete.
+If anything missing is noted with your own markdown documents, it would be great to get any source examples or pull requests (add your example(s) to [`test.md`](test.md)) to help make things complete.
