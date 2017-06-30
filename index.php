@@ -232,7 +232,7 @@ class GitHubMarkdownRender {
 		}
 
 		a {
-			color: #4183c4;
+			color: #0366d6;
 			text-decoration: none;
 		}
 
