@@ -142,6 +142,7 @@ class GitHubMarkdownRender {
 			border-radius: 3px;
 			margin: 0 auto;
 			width: 978px;
+			word-wrap: break-word;
 		}
 
 		#markdown {
@@ -358,10 +359,6 @@ class GitHubMarkdownRender {
 			font-size: 85%;
 			margin: 0;
 			padding: 0.2em 0;
-		}
-
-		code {
-			white-space: nowrap;
 		}
 
 		code:before,
